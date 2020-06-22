@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sum(a) {
+            return function (b) {
+                return a+b;
+            }
+        }
+        console.log('Сумма "5" и "-2" = ', sum (5)(-2));
+    </script>
+    <script>
+        function makeCounter() {
+            let x = 1;
+            return function counter() {
+                return x++;                
+            };            
+        }
+        const counter = makeCounter();
+        const counter2 = makeCounter();
+        
+        alert(counter());
+        alert(counter());
+        alert(counter2());
+        alert(counter2());
+        alert(counter());
+    </script>
+    <script>
+        let dataInput = [];
+        let answer;
+        let digit = 0;        
+        function sumInput() {
+            while (isNum(digit)) {
+                digit = prompt('Enter number', 0);
+                if (!isNaN(digit)) {
+                    dataInput.push(+digit);   
+                }
+            }
+            function isNum(value) {
+                let testNum = /[+-]?\d+(\.\d+)?/;
+                return testNum.test(value);
+            }
+            answer = dataInput.reduce((add, currentPos) => add + currentPos, 0);    
+            return answer;
+        }
+        sumInput();        
+        console.log(answer);
+        </script>
+</body>
+</html>
